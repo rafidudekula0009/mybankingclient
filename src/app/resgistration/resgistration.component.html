@@ -1,0 +1,12 @@
+<small *ngIf="isRegistrationFailed">{{errorMessage}}</small>
+<div>
+    
+  firstname:<input type="text" name="" [(ngModel)]="firstname"><br>
+  lastname:<input type="text" name="" [(ngModel)]="lastname"><br>
+  mobileno:<input type="text" name="" [(ngModel)]="mobileno"><br>
+  email:<input type="email" name="" [(ngModel)]="email"><br>
+  username:<input type="text" name="" [(ngModel)]="username"><br>
+  password:<input type="password" name="" [(ngModel)]="password"><br>
+
+<button (click)="handleRegister()">Register</button><button (click)="handleLogin()">Login</button>
+</div>
