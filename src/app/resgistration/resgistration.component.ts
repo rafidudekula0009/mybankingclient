@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ResgistrationComponent {
 
+  //this keyword must be used to make use of these attributes
   firstname=''
   lastname=''
   mobileno=''
@@ -18,6 +19,7 @@ export class ResgistrationComponent {
   errorMessage='Some error occured'
   isRegistrationFailed=false
 
+  //Router can be used to navigate from one component/page to another componet/page
   constructor(private route:Router){
 
   }

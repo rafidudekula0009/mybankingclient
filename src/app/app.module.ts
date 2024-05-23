@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule //This is used to make use of features like ngModel, ngIf in the html pages of the components added in the declarations above
   ],
   providers: [],
   bootstrap: [AppComponent]

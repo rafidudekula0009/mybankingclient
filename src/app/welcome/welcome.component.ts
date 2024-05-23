@@ -7,9 +7,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent {
+
+  //ActivatedRoute is used to fetch the request parameters/some varaible values sent through url. ex:localhost:4200/welcome/name?='rafi'
+  //So name and any other variable passed in the url can be fetched using ActivatedRoute
   constructor(private router:ActivatedRoute){
 
   }
 
+  //snapshot contains the snapshot of all variables/attributes received.
   name=this.router.snapshot.params['name']
 }

@@ -6,11 +6,11 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
-  {path:'', component:ResgistrationComponent},
+  {path:'', component:ResgistrationComponent},//by default when we open localhost:4200, registration page will be opened
   {path:'register', component:ResgistrationComponent},
-  {path:'login', component:LoginComponent},
+  {path:'login', component:LoginComponent},//when user enters localhos:4200/login, then login component/html page will be opened
   {path:'welcome/:name', component:WelcomeComponent},
-  {path:'error', component:ErrorComponent},
+  {path:'**', component:ErrorComponent},//when user enters wrong url or any error occurs during user journey, then it will be rendered
 ];
 
 @NgModule({

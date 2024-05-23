@@ -1,6 +1,12 @@
+<!-- ngIf is like if condition -->
+<!-- {{errorMessage}} is the interpollation where errorMessage is the attribute name defined in the ts file of respective component -->
 <small *ngIf="isRegistrationFailed">{{errorMessage}}</small>
 <div>
-    
+   <!-- ngModel is used to bidirectional binding of a variable. Here firstname assigned to ngModel is 
+    the attribute name defined in the registration.component.ts file. 
+    If any value assigned by default in the ts file for the firstname 
+    then it will be visible in this html page and whatever we enter in
+    the html page will be automatically binded to the firstname in the ts file--> 
   firstname:<input type="text" name="" [(ngModel)]="firstname"><br>
   lastname:<input type="text" name="" [(ngModel)]="lastname"><br>
   mobileno:<input type="text" name="" [(ngModel)]="mobileno"><br>
