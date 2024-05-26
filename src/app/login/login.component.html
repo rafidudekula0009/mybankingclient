@@ -1,8 +1,25 @@
 <small *ngIf="loginFailed">{{errorMessage}}</small>
-<div>
-  username:<input type="text" name="" [(ngModel)]="username"><br>
-  password:<input type="password" name="" [(ngModel)]="password"><br>
-
-<button (click)="handleLogin()">Login</button><button (click)="handleRegister()">Register</button>
+<br>
+<div class="d-flex flex-row align-items-center mb-4">
+    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+        <input type="text" id="form3Example1c" class="form-control" [(ngModel)]="username" />
+        <label class="form-label" for="form3Example1c">username</label>
+    </div>
+</div>
+<div class="d-flex flex-row align-items-center mb-4">
+    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+        <input type="text" id="form3Example1c" class="form-control" [(ngModel)]="password" />
+        <label class="form-label" for="form3Example1c">password</label>
+    </div>
 </div>
 
+<div class="d-flex justify-content">
+    <button type="button" (click)="handleRegister()" 
+        class="btn btn-light btn-lg">Register</button>
+    <button type="button" (click)="handleLogin()" 
+        class="btn btn-warning btn-lg ms-2">Login</button>
+</div>
+
+<!-- ngModel is expalined in register.comp.html -->

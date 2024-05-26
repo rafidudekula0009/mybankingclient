@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Just go to the https://unpkg.com/bootstrap@4.1.0/dist/css page 
+and opt for view raw for bootstrap.min.css 
+and then copy the url and paste it here by using import and start using the features of bootstrap*/
+@import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css)

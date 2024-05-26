@@ -8,14 +8,22 @@ import { ResgistrationComponent } from './resgistration/resgistration.component'
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './footer/footer.component';
+import { MenuComponent } from './menu/menu.component';
+import { LogoutComponent } from './logout/logout.component';
+import { NeedhelpComponent } from './needhelp/needhelp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorComponent,
+    ErrorComponent, //any unknown error occures then this page is shown as this is routed as '**' in the routes
     ResgistrationComponent,
     LoginComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    FooterComponent, //footer
+    MenuComponent, //header
+    LogoutComponent,
+    NeedhelpComponent //Just information to user
   ],
   imports: [
     BrowserModule,

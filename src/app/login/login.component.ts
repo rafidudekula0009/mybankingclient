@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HarcodedAuthenticationService } from '../service/harcoded-authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -8,24 +9,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  username=''
-  password=''
-  loginFailed=false
-  errorMessage='login failed..'
-  constructor(private route:Router){
+  username :string= ''
+  password :string = ''
+  loginFailed :boolean= false
+  errorMessage :string = 'login failed..'
+  constructor(private route: Router, private hardcodedAuth: HarcodedAuthenticationService) {
 
   }
 
-  handleRegister(){
+  handleRegister() {
     this.route.navigate(['register'])
   }
-  handleLogin(){
-    if(this.username==='rafi'&&this.password==='rafi1234'){
-      this.loginFailed=false
-      this.route.navigate(['welcome',this.username])
-    }else{
-      this.loginFailed=true
-    }
-    
+  handleLogin() {
+    this.loginFailed = this.hardcodedAuth.isUserLoggedIn();
   }
 }

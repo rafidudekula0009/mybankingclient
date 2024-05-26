@@ -1,18 +1,66 @@
 <!-- ngIf is like if condition -->
 <!-- {{errorMessage}} is the interpollation where errorMessage is the attribute name defined in the ts file of respective component -->
-<small *ngIf="isRegistrationFailed">{{errorMessage}}</small>
+<small *ngIf="isRegistrationFailed">{{errorMessage}}</small><br>
 <div>
-   <!-- ngModel is used to bidirectional binding of a variable. Here firstname assigned to ngModel is 
+    <!-- ngModel is used to bidirectional binding of a variable. Here firstname assigned to ngModel is 
     the attribute name defined in the registration.component.ts file. 
     If any value assigned by default in the ts file for the firstname 
     then it will be visible in this html page and whatever we enter in
-    the html page will be automatically binded to the firstname in the ts file--> 
-  firstname:<input type="text" name="" [(ngModel)]="firstname"><br>
-  lastname:<input type="text" name="" [(ngModel)]="lastname"><br>
-  mobileno:<input type="text" name="" [(ngModel)]="mobileno"><br>
-  email:<input type="email" name="" [(ngModel)]="email"><br>
-  username:<input type="text" name="" [(ngModel)]="username"><br>
-  password:<input type="password" name="" [(ngModel)]="password"><br>
+    the html page will be automatically binded to the firstname in the ts file-->
 
-<button (click)="handleRegister()">Register</button><button (click)="handleLogin()">Login</button>
+    <div class="d-flex flex-row align-items-center mb-4">
+        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+        <div data-mdb-input-init class="form-outline flex-fill mb-0">
+            <input type="text" id="form3Example1c" class="form-control" [(ngModel)]="firstname" />
+            <label class="form-label" for="form3Example1c">firstname</label>
+        </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-4">
+        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+        <div data-mdb-input-init class="form-outline flex-fill mb-0">
+            <input type="text" id="form3Example1c" class="form-control" [(ngModel)]="lastname" />
+            <label class="form-label" for="form3Example1c">lastname</label>
+        </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-4">
+        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+        <div data-mdb-input-init class="form-outline flex-fill mb-0">
+            <input type="text" id="form3Example1c" class="form-control" [(ngModel)]="mobileno" />
+            <label class="form-label" for="form3Example1c">mobileno</label>
+        </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-4">
+        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+        <div data-mdb-input-init class="form-outline flex-fill mb-0">
+            <input type="text" id="form3Example1c" class="form-control" [(ngModel)]="email" />
+            <label class="form-label" for="form3Example1c">email</label>
+        </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-4">
+        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+        <div data-mdb-input-init class="form-outline flex-fill mb-0">
+            <input type="text" id="form3Example1c" class="form-control" [(ngModel)]="username" />
+            <label class="form-label" for="form3Example1c">username</label>
+        </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-4">
+        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+        <div data-mdb-input-init class="form-outline flex-fill mb-0">
+            <input type="text" id="form3Example1c" class="form-control" [(ngModel)]="password" />
+            <label class="form-label" for="form3Example1c">password</label>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content">
+        <button type="button" (click)="handleRegister()" 
+            class="btn btn-light btn-lg">Register</button>
+        <button type="button" (click)="handleLogin()" 
+            class="btn btn-warning btn-lg ms-2">Login</button>
+    </div>
+    <br>
 </div>
