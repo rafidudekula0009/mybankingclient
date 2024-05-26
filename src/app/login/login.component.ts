@@ -9,10 +9,10 @@ import { HarcodedAuthenticationService } from '../service/harcoded-authenticatio
 })
 export class LoginComponent {
 
-  username :string= ''
-  password :string = ''
-  loginFailed :boolean= false
-  errorMessage :string = 'login failed..'
+  username: string = ''
+  password: string = ''
+  loginFailed: boolean = false
+  errorMessage: string = 'login failed..'
   constructor(private route: Router, private hardcodedAuth: HarcodedAuthenticationService) {
 
   }
@@ -21,6 +21,12 @@ export class LoginComponent {
     this.route.navigate(['register'])
   }
   handleLogin() {
-    this.loginFailed = this.hardcodedAuth.isUserLoggedIn();
+    sessionStorage.setItem('userName', this.username);
+    if (this.hardcodedAuth.isUserLoggedIn()) {
+      this.loginFailed = false;
+      this.route.navigate(['welcome',this.username]);
+    }else{
+      this.loginFailed=true;
+    }
   }
 }

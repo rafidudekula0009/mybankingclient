@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { LogoutComponent } from './logout/logout.component';
 import { NeedhelpComponent } from './needhelp/needhelp.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { NeedhelpComponent } from './needhelp/needhelp.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule //This is used to make use of features like ngModel, ngIf in the html pages of the components added in the declarations above
   ],
   providers: [],
