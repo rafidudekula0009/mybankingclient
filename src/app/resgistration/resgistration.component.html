@@ -1,6 +1,6 @@
 <!-- ngIf is like if condition -->
 <!-- {{errorMessage}} is the interpollation where errorMessage is the attribute name defined in the ts file of respective component -->
-<small *ngIf="successMsg">{{successMsg}}</small><br>{{successMsg|json}}
+<small *ngIf="successMsg" class="smallSuccess">{{successMsg}}</small><br>
 <small *ngIf="isRegistrationFailed">{{errorMessage}}</small><br>
 <div>
     <!-- ngModel is used to bidirectional binding of a variable. Here firstname assigned to ngModel is 
@@ -58,10 +58,8 @@
     </div>
 
     <div class="d-flex justify-content">
-        <button type="button" (click)="handleRegister()" 
-            class="btn btn-light btn-lg">Register</button>
-        <button type="button" (click)="handleLogin()" 
-            class="btn btn-warning btn-lg ms-2">Login</button>
+        <button type="button" (click)="handleRegister()" class="btn btn-light btn-lg">Register</button>
+        <button type="button" (click)="handleLogin()" class="btn btn-warning btn-lg ms-2">Login</button>
     </div>
     <br>
 </div>

@@ -5,6 +5,10 @@ export class Customer {
   constructor(public firstName:string,public lastName:string,public mobileNumber:string,public emailId:string,public userName:string,public password:string){}
 }
 
+export class Response {
+  constructor(public message:string){}
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +23,11 @@ export class HelloWorldService {
     return this.http.get<Customer>(`http://localhost:8080/customer/get_customer?customerId=${customerId}`);
   }
 
+  getUserDetails(userName: string, password:string) {
+    return this.http.get<Customer>(`http://localhost:8080/customer/get_customer_by_username?userName=${userName}&password=${password}`);
+  }
+  
+
   registerCustomer(firstName:string,
     lastName:string,
     mobileNumber:string,
@@ -27,6 +36,6 @@ export class HelloWorldService {
     password:string) {
 
     console.log("registercustomer invoked!!")
-    return this.http.post<string>(`http://localhost:8080/registration/register_customer`,new Customer(firstName,lastName,mobileNumber,emaiId,userName,password));
+    return this.http.post<Response>(`http://localhost:8080/registration/register_customer`,new Customer(firstName,lastName,mobileNumber,emaiId,userName,password));
   }
 }

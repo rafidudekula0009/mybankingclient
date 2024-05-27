@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HarcodedAuthenticationService } from '../service/harcoded-authentication.service';
-import { HelloWorldService } from '../service/data/hello-world.service';
+import { HelloWorldService, Response } from '../service/data/hello-world.service';
 
 @Component({
   selector: 'app-resgistration',
@@ -18,7 +18,7 @@ export class ResgistrationComponent {
   username = 'prassilla'
   password = 'prassilla1234'
 
-  successMsg:string=''
+  successMsg: any;
   errorMessage = 'Some error occured'
   isRegistrationFailed = false
 
@@ -29,7 +29,11 @@ export class ResgistrationComponent {
 
   handleRegister() {
     this.helloService.registerCustomer(this.firstname, this.lastname, this.mobileno, this.email, this.username, this.password);
-    this.helloService.registerCustomer(this.firstname, this.lastname, this.mobileno, this.email, this.username, this.password).subscribe((data)=>{handleResponse(data)});
+    this.helloService.registerCustomer(this.firstname, this.lastname, this.mobileno, this.email, this.username, this.password)
+    .subscribe((data) => { 
+      handleResponse(data);
+      this.successMsg=data.message; 
+    },error=>{console.log(error.error.message),this.errorMessage=error.error.message});
     if (this.firstname === 'rafi') {
       this.isRegistrationFailed = false;
       this.route.navigate(['login'])
@@ -42,8 +46,8 @@ export class ResgistrationComponent {
     this.route.navigate(['login'])
   }
 }
-function handleResponse(data: String): void {
+function handleResponse(data: Response): void {
   console.log("handle response invoked!!")
-  console.log("response=> "+data)
+  console.log("response=> " + data.message)
 }
 
