@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HarcodedAuthenticationService } from '../service/harcoded-authentication.service';
-import { HelloWorldService } from '../service/data/hello-world.service';
+import { RegisterCustomerService } from '../service/data/register-customer.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent {
   password: string = ''
   loginFailed: boolean = false
   errorMessage: string = 'login failed..'
-  constructor(private route: Router, private hardcodedAuth: HarcodedAuthenticationService, private helloService: HelloWorldService) {
+  constructor(private route: Router, private hardcodedAuth: HarcodedAuthenticationService, private helloService: RegisterCustomerService) {
 
   }
 
