@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 export class Customer {
-  constructor(public firstName: string, public lastName: string, public mobileNumber: string, public emailId: string, public userName: string, public password: string) { }
+  constructor(public id: number, public firstName: string, public lastName: string, public mobileNumber: string, public emailId: string, public userName: string, public password: string) { }
 }
 
 export class Response {
@@ -27,6 +27,9 @@ export class RegisterCustomerService {
     return this.http.get<Customer>(`http://localhost:8080/customer/get_customer_by_username?userName=${userName}&password=${password}`);
   }
 
+  updateCustomer(customer: Customer) {
+    return this.http.put<Customer>(`http://localhost:8080/customer/update_customer`, customer);
+  }
 
   registerCustomer(firstName: string,
     lastName: string,
@@ -36,6 +39,6 @@ export class RegisterCustomerService {
     password: string) {
 
     console.log("registercustomer invoked!!")
-    return this.http.post<Response>(`http://localhost:8080/registration/register_customer`, new Customer(firstName, lastName, mobileNumber, emaiId, userName, password));
+    return this.http.post<Response>(`http://localhost:8080/registration/register_customer`, new Customer(-1, firstName, lastName, mobileNumber, emaiId, userName, password));
   }
 }

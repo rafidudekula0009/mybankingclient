@@ -3,7 +3,8 @@
         <div><a *ngIf="!hardcodedAuth.isUserLoggedIn()" routerLink="/register" class="navbar-brand">Register</a></div>
         <ul class="navbar-nav">
             <li><a routerLink="/about" class="nav-link">About</a></li>
-            <li><a routerLink="/help" class="nav-link">Help</a></li>
+            <li><a *ngIf="hardcodedAuth.isUserLoggedIn()" routerLink="/profile" class="nav-link">Profile</a></li>
+
         </ul>
 
         <ul class="navbar-nav navbar-collapse justify-content-end">

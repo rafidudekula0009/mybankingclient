@@ -1,0 +1,17 @@
+<H2>Update Profile!</H2>{{firstName}}
+<!-- <form (ngSubmit)="saveForm()"> -->
+<div class="container">
+    <fieldset class="form-group">
+        <label>FirstName</label>
+        <input type="text" [(ngModel)]="firstName" class="form-control">
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>LastName</label>
+        <input type="text" [(ngModel)]="lastName" class="form-control">
+    </fieldset>
+</div><br>
+<div class="container">
+    <button type="button" (click)="saveForm()" class="btn btn-success">Save</button>
+</div>
+<!-- </form> -->

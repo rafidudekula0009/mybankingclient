@@ -7,14 +7,14 @@ export class HarcodedAuthenticationService {
 
   constructor() { }
 
-  public isUserLoggedIn():boolean{
-    if(sessionStorage.getItem('userName')!=null){
+  public isUserLoggedIn(): boolean {
+    if (sessionStorage.getItem('lastName') != null) {
       return true;
     }
     return false
   }
 
-  public logout(){
-    sessionStorage.removeItem('userName');
+  public logout() {
+    sessionStorage.removeItem('lastName');
   }
 }

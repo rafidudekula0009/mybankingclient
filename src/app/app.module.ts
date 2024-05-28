@@ -13,6 +13,8 @@ import { MenuComponent } from './menu/menu.component';
 import { LogoutComponent } from './logout/logout.component';
 import { NeedhelpComponent } from './needhelp/needhelp.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileUpdateComponent } from './profile-update/profile-update.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     FooterComponent, //footer
     MenuComponent, //header
     LogoutComponent,
-    NeedhelpComponent //Just information to user
+    NeedhelpComponent,
+    ProfileComponent,
+    ProfileUpdateComponent //Just information to user
   ],
   imports: [
     BrowserModule,

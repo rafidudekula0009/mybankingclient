@@ -1,0 +1,23 @@
+<H2>Your Profile</H2><br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">FirstName</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">EmailId</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{customer.firstName}}</td>
+            <td>{{ customer.lastName }}</td>
+            <td>{{ customer.mobileNumber }}</td>
+            <td>{{ customer.emailId }}</td>
+            <td><button type="button" class="btn-warning" (click)="editProfile(customer.id)">Update</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- <button type="button" class="btn-success" (click)="editProfile(customer.id)">Add</button><br><br> -->
