@@ -9,12 +9,13 @@ import { NeedhelpComponent } from './needhelp/needhelp.component';
 import { RouteGuardService } from './service/route-guard.service';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileUpdateComponent } from './profile-update/profile-update.component';
+import { LoginRouteGuardService } from './service/login-route-guard.service';
 
 const routes: Routes = [
   //path:'**' must be in the last/bottom as order is mandatory. If we place it in between then even if we enter /login it might show error page. 
   { path: '', component: ResgistrationComponent },//by default when we open localhost:4200, registration page will be opened
   { path: 'register', component: ResgistrationComponent },
-  { path: 'login', component: LoginComponent },//when user enters localhos:4200/login, then login component/html page will be opened
+  { path: 'login', component: LoginComponent, canActivate: [LoginRouteGuardService] },//when user enters localhos:4200/login, then login component/html page will be opened
   { path: 'logout', component: LogoutComponent },
   { path: 'profile/:id', component: ProfileComponent, canActivate: [RouteGuardService] },
   { path: 'profile', component: ProfileComponent, canActivate: [RouteGuardService] },

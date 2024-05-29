@@ -1,17 +1,33 @@
-<H2>Update Profile!</H2>{{firstName}}
-<!-- <form (ngSubmit)="saveForm()"> -->
+<H2>Update Profile!</H2>
+<span *ngIf="errorMsg">{{errorMsg}}</span>
+<!-- <div class="alert alert-warning" *ngIf="profileForm.dirty && profileForm.invalid">Enter valid values</div> -->
 <div class="container">
-    <fieldset class="form-group">
-        <label>FirstName</label>
-        <input type="text" [(ngModel)]="firstName" class="form-control">
-    </fieldset>
+    <!-- <form (ngSubmit)="!profileForm.invalid && saveForm()" #profileForm="ngForm"> -->
+    <div class="container">
+        <fieldset class="form-group">
+            <label>FirstName</label>
+            <!-- As we are using form tag, when we use ngModel then it will not bind the value
+                    to the attribute until we mention standalone as 
+                    true([ngModelOptions]="{standalone: true}") on submit-->
+            <!-- required validation won't work until we use template variable ngForm -->
+            <input type="text" [(ngModel)]="firstName" class="form-control" required="true">
+        </fieldset>
 
-    <fieldset class="form-group">
-        <label>LastName</label>
-        <input type="text" [(ngModel)]="lastName" class="form-control">
-    </fieldset>
-</div><br>
-<div class="container">
-    <button type="button" (click)="saveForm()" class="btn btn-success">Save</button>
-</div>
-<!-- </form> -->
+        <fieldset class="form-group">
+            <label>LastName</label>
+            <input type="text" [(ngModel)]="lastName" class="form-control" required="true">
+        </fieldset>
+    </div><br>
+
+    <button type="button" (click)="sendOtp()" class="btn btn-success">Send Otp</button>
+    <!-- <button type="submit" class="btn btn-success">Save</button> -->
+
+    <!-- </form> -->
+    <br><br>
+
+    <label *ngIf="isOtpSent">Please enter the otp sent to your registered emailId</label>
+    <input *ngIf="isOtpSent" type="number" [(ngModel)]="otp" class="form-control" /><br>
+    <button *ngIf="isOtpSent" type="button" (click)="validateAndSaveProfileData()" class="btn btn-success">Validate And
+        Update</button>
+
+    <!-- </div> -->

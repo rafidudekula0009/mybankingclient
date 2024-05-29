@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer, RegisterCustomerService } from '../service/data/register-customer.service';
+import { Customer, RegisterCustomerService, Response } from '../service/data/register-customer.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,6 +13,12 @@ export class ProfileUpdateComponent implements OnInit {
   firstName = ''
   lastName = ''
   id = sessionStorage.getItem('id')
+  otp: any;
+  isOtpSent = false;
+  profileOtpResponse!: string
+  errorMsg = '';
+  response!: Response;
+  anyerror: any
   constructor(private router: Router, private customerService: RegisterCustomerService) { }
 
   ngOnInit(): void {
@@ -22,13 +28,41 @@ export class ProfileUpdateComponent implements OnInit {
       })
   }
 
-  saveForm() {
+  sendOtp() {
+
+    this.customerService.sendOtpToUpdateProfile(Number(sessionStorage.getItem('id'))).subscribe(
+      data => {
+        this.response = data;
+        if (this.response.message === "Success") {
+          this.isOtpSent = true;
+        } else {
+          this.isOtpSent = false;
+          this.errorMsg = 'Unable to send otp at this time';
+        }
+      }
+    );
+  }
+
+  validateAndSaveProfileData() {
     this.customer.firstName = this.firstName;
     this.customer.lastName = this.lastName;
-    this.customerService.updateCustomer(this.customer);
+    this.customer.profileUpdateOtp = this.otp;
+
     this.customerService.updateCustomer(this.customer).subscribe(
-      data => this.customer = data
+      data => {
+        console.log("response from update=>" + data)
+        this.response = data;
+        if (this.response.message === "Success") {
+          this.router.navigate(['profile']);
+        } else {
+          this.errorMsg = 'Invalid otp'
+        }
+      },
+      error => {
+        this.anyerror = error;
+        console.log("error message from update=>" + error.errorMessage)
+      }
     );
-    this.router.navigate(['profile']);
   }
+
 }
