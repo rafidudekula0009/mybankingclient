@@ -54,10 +54,33 @@
                 placeholder="password" />
         </div>
     </div>
+    <i class="fas fa-user fa-lg me-3 fa-fw">Account Type to open</i>
+    <div class="d-flex flex-row align-items-center mb-4">
+
+        <label>Savings Account</label>
+        <div data-mdb-input-init class="form-outline flex-fill mb-0">
+
+            <input type="checkbox" id="savingsAccount" name="savingsAccount" [(ngModel)]="savingsAccount"
+                placeholder="savingsAccount">
+        </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-4">
+
+        <label>Current Account</label>
+        <div data-mdb-input-init class="form-outline flex-fill mb-0">
+
+            <input type="checkbox" id="currentAccount" name="currentAccount" [(ngModel)]="currentAccount"
+                placeholder="currentAccount">
+        </div>
+    </div>
+
 
     <div class="d-flex justify-content">
         <button type="button" (click)="handleRegister()" class="btn btn-light btn-lg">Register</button>
         <button type="button" (click)="handleLogin()" class="btn btn-warning btn-lg ms-2">Login</button>
     </div>
     <br>
+
+
 </div>

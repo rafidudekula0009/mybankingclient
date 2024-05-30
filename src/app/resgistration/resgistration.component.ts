@@ -17,7 +17,10 @@ export class ResgistrationComponent {
   email = ''
   username = ''
   password = ''
+  savingsAccount = true;
+  currentAccount = false;
 
+  rememberMe: any;
   successMsg = '';
   errorMessage = 'Some error occured'
   isRegistrationFailed = false
@@ -28,17 +31,17 @@ export class ResgistrationComponent {
   }
 
   handleRegister() {
-    this.registerCustomerService.registerCustomer(this.firstname, this.lastname, this.mobileno, this.email, this.username, this.password);
-    this.registerCustomerService.registerCustomer(this.firstname, this.lastname, this.mobileno, this.email, this.username, this.password)
+    this.registerCustomerService.registerCustomer(this.firstname, this.lastname, this.mobileno, this.email, this.username, this.password, this.savingsAccount, this.currentAccount)
       .subscribe((data) => {
         this.successMsg = data.message;
+
+        if (this.successMsg === '') {
+          this.isRegistrationFailed = true;
+        } else {
+          this.isRegistrationFailed = false;
+        }
       }, error => { console.log(error.error.message), this.errorMessage = error.error.message });
-    if (this.successMsg === '') {
-      this.isRegistrationFailed = true;
-    } else {
-      this.isRegistrationFailed = false;
-      this.route.navigate(['login'])
-    }
+
   }
 
   handleLogin() {

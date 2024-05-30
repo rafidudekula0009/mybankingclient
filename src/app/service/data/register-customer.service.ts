@@ -2,7 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 export class Customer {
-  constructor(public id: number, public firstName: string, public lastName: string, public mobileNumber: string, public emailId: string, public userName: string, public password: string, public profileUpdateOtp: number) { }
+  constructor(public id: number, public firstName: string, public lastName: string, public mobileNumber: string, public emailId: string, public userName: string, public password: string, public profileUpdateOtp: number, public savingsAccount: boolean, public currentAccount: boolean) { }
+}
+
+export class CustomerWithoutId {
+  constructor(public firstName: string, public lastName: string, public mobileNumber: string, public emailId: string, public userName: string, public password: string, public profileUpdateOtp: number, public savingsAccount: boolean, public currentAccount: boolean) { }
 }
 
 export class Response {
@@ -42,9 +46,11 @@ export class RegisterCustomerService {
     mobileNumber: string,
     emaiId: string,
     userName: string,
-    password: string) {
+    password: string,
+    savingsAccount: boolean,
+    currentAccount: boolean) {
 
     console.log("registercustomer invoked!!")
-    return this.http.post<Response>(`http://localhost:8080/registration/register_customer`, new Customer(-1, firstName, lastName, mobileNumber, emaiId, userName, password, 0));
+    return this.http.post<Response>(`http://localhost:8080/registration/register_customer`, new CustomerWithoutId(firstName, lastName, mobileNumber, emaiId, userName, password, 0, savingsAccount, currentAccount));
   }
 }

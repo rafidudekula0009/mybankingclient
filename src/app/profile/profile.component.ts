@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.customer = new Customer(1, "", "", "", "", "", "", 0);
+    this.customer = new Customer(1, "", "", "", "", "", "", 0, false, false);
 
     this.helloService.getCustomerDetails(Number(this.id)).subscribe(data => { this.customer = data; });
   }
