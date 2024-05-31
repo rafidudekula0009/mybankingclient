@@ -1,2 +1,19 @@
 <H2>welcome {{name}}!</H2><br>
-<button type="button" (click)="showProfilePage()">showProfile</button><br><br>
+<!-- <button type="button" (click)="showProfilePage()">showProfile</button><br><br> -->
+<br><br>
+<h3>Account Details:</h3>
+
+<table class="table">
+    <thead>
+        <th>Account Type</th>
+        <th>Account Number</th>
+        <th>Balance</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let account of accountDetails">
+            <td>{{account.accountType}}</td>
+            <td>{{account.accountNumber}}</td>
+            <td>{{account.balance}}</td>
+        </tr>
+    </tbody>
+</table>
