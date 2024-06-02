@@ -15,6 +15,7 @@ import { NeedhelpComponent } from './needhelp/needhelp.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileUpdateComponent } from './profile-update/profile-update.component';
+import { ViewTransactionHistoryComponent } from './view-transaction-history/view-transaction-history.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProfileUpdateComponent } from './profile-update/profile-update.componen
     LogoutComponent,
     NeedhelpComponent,
     ProfileComponent,
-    ProfileUpdateComponent //Just information to user
+    ProfileUpdateComponent,
+    ViewTransactionHistoryComponent //Just information to user
   ],
   imports: [
     BrowserModule,

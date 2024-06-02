@@ -24,4 +24,9 @@ export class AccountTransactionService {
   getAccountTransactions(noOfRows: Number, accountId: Number) {
     return this.http.get<any>(`http://localhost:8080/account_transactions/get_transactions_by_count?noOfRows=${noOfRows}&accountId=${accountId}`);
   }
+
+  getAccountTransactionsBetweenDates(accountId: Number, fromDate: String, toDate: String) {
+    return this.http.get<any>(`http://localhost:8080/account_transactions/get_transactions_between_dates?accountId=${accountId}&fromDate=${fromDate}&toDate=${toDate}`);
+  }
+
 }

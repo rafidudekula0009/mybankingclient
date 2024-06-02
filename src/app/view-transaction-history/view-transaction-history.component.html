@@ -1,0 +1,28 @@
+<H2>Your Transaction History!</H2>
+
+<div class="container">
+
+    <table class="table" *ngIf="accountTxnDetails">
+        <thead>
+            <th>Transaction Type</th>
+            <th>Transaction Amount</th>
+            <th>Account Number</th>
+            <th>Transaction Id</th>
+            <th>Date Of Transaction</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let accountTxn of accountTxnDetails">
+                <td>{{accountTxn.transactionType}}</td>
+                <td>{{accountTxn.txnAmount}}</td>
+                <td>{{accountTxn.depositOrTransferAccountNumber}}</td>
+                <td>{{accountTxn.txnId}}</td>
+                <td>{{accountTxn.dateOfTransaction}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+From : <input type="datetime-local" [(ngModel)]="fromDate" class="form-control">
+<br>To : <input type="datetime-local" [(ngModel)]="toDate" class="form-control">
+<br><button type="button" class="btn-success" (click)="viewTransactionsBetweenDates()">View
+    Transactions</button>

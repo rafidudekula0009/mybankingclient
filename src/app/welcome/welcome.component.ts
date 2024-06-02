@@ -9,20 +9,10 @@ import { AccountTransactionService } from '../service/data/account-transaction.s
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
 })
+
+
 export class WelcomeComponent implements OnInit {
-  viewTransactions(accountId: Number) {
-    this.accountTransactionService.getAccountTransactions(4, accountId).subscribe(
-      data => {
-        this.accountTxnDetails = data;
-      }
-    );
-  }
-
   accountDetails: any;
-  accountTxnDetails: any;
-
-
-
   //ActivatedRoute is used to fetch the request parameters/some varaible values sent through url. ex:localhost:4200/welcome/rafi i.e, welcome/<value of the attribute 'name'>
   //So name and any other variable passed in the url can be fetched using ActivatedRoute
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private helloService: RegisterCustomerService, private accountService: AccountService, private accountTransactionService: AccountTransactionService) {
@@ -38,6 +28,10 @@ export class WelcomeComponent implements OnInit {
   name = this.activatedRoute.snapshot.params['userName']
   showProfilePage() {
     this.router.navigate(['profile']);
+  }
+
+  viewTransactions(accountId: Number) {
+    this.router.navigate(['view_transaction_history', accountId])
   }
 }
 
