@@ -15,7 +15,8 @@
             <td>{{account.accountType}}</td>
             <td>{{account.accountNumber}}</td>
             <td>{{account.balance}}</td>
-            <td><button type="button" class="btn-warning" (click)="viewTransactions(account.id)">View
+            <td><button type="button" class="btn-warning"
+                    (click)="viewTransactions(account.id, account.accountType,account.accountNumber)">View
                     Transactions</button></td>
         </tr>
     </tbody>

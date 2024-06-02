@@ -30,8 +30,8 @@ export class WelcomeComponent implements OnInit {
     this.router.navigate(['profile']);
   }
 
-  viewTransactions(accountId: Number) {
-    this.router.navigate(['view_transaction_history', accountId])
+  viewTransactions(accountId: Number, accountType: String, accountNumber: String) {
+    this.router.navigate(['view_transaction_history', accountId, accountType, accountNumber])
   }
 }
 

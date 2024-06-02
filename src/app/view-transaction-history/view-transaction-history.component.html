@@ -1,9 +1,14 @@
-<H2>Your Transaction History!</H2>
+<div class="h2div">
+    <H3 class="alignleft">AccountType : {{accountType}}</H3>
 
+    <H3 class="alignright">AccountNumber : {{accountNumber}}</H3><br><br>
+</div>
+<H2 *ngIf="fromDate && toDate && enableH2">Transaction from "{{fromDate | date:'dd:MM:yyyy HH:MM:ss'}}" to "{{toDate |
+    date:'dd:MM:yyyy HH:MM:ss'}}" </H2><br>
 <div class="container">
 
-    <table class="table" *ngIf="accountTxnDetails">
-        <thead>
+    <table class="table" border="1" *ngIf="accountTxnDetails">
+        <thead class="thead-dark">
             <th>Transaction Type</th>
             <th>Transaction Amount</th>
             <th>Account Number</th>
@@ -21,8 +26,10 @@
         </tbody>
     </table>
 </div>
-
-From : <input type="datetime-local" [(ngModel)]="fromDate" class="form-control">
-<br>To : <input type="datetime-local" [(ngModel)]="toDate" class="form-control">
-<br><button type="button" class="btn-success" (click)="viewTransactionsBetweenDates()">View
-    Transactions</button>
+<br><br>
+<div class="container">
+    From : <input type="datetime-local" [(ngModel)]="fromDate" class="form-control">
+    <br>To : <input type="datetime-local" [(ngModel)]="toDate" class="form-control">
+    <br><button type="button" class="btn-success" (click)="viewTransactionsBetweenDates()">View
+        Transactions</button><br><br>
+</div>
