@@ -8,7 +8,8 @@ import { HarcodedAuthenticationService } from '../service/harcoded-authenticatio
 })
 export class MenuComponent {
 
-  constructor(public hardcodedAuth:HarcodedAuthenticationService){
+  lastName = sessionStorage.getItem('lastName');
+  constructor(public hardcodedAuth: HarcodedAuthenticationService) {
 
   }
 }

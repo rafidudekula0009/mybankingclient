@@ -1,0 +1,27 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Customer } from './register-customer.service';
+
+export class AccountTransactions {
+  constructor(
+    public transactionType: string,
+    public txnAmount: Number,
+    public depositOrTransferAccountNumber: string,
+    public txnId: string,
+    public dateOfTransaction: string,
+    public accountTempId: Number) { }
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AccountTransactionService {
+
+  constructor(private http: HttpClient) {
+
+  }
+
+  getAccountTransactions(noOfRows: Number, accountId: Number) {
+    return this.http.get<any>(`http://localhost:8080/account_transactions/get_transactions_by_count?noOfRows=${noOfRows}&accountId=${accountId}`);
+  }
+}

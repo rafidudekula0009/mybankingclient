@@ -3,19 +3,29 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Customer, RegisterCustomerService } from '../service/data/register-customer.service';
 import { AccountService } from '../service/data/account.service';
+import { AccountTransactionService } from '../service/data/account-transaction.service';
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
+  viewTransactions(accountId: Number) {
+    this.accountTransactionService.getAccountTransactions(4, accountId).subscribe(
+      data => {
+        this.accountTxnDetails = data;
+      }
+    );
+  }
 
   accountDetails: any;
+  accountTxnDetails: any;
+
 
 
   //ActivatedRoute is used to fetch the request parameters/some varaible values sent through url. ex:localhost:4200/welcome/rafi i.e, welcome/<value of the attribute 'name'>
   //So name and any other variable passed in the url can be fetched using ActivatedRoute
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private helloService: RegisterCustomerService, private accountService: AccountService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private helloService: RegisterCustomerService, private accountService: AccountService, private accountTransactionService: AccountTransactionService) {
 
   }
 

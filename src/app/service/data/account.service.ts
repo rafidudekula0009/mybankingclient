@@ -16,7 +16,7 @@ export class AccountService {
   }
 
   getAccountDetails(customerId: number) {
-    return this.http.get<any>(`http://localhost:8080/customer/get_account_details?customerId=${customerId}`);
+    return this.http.get<any>(`http://localhost:8080/account/get_account_details?customerId=${customerId}`);
   }
 
   getUserDetails(userName: string, password: string) {
