@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CustomerUtilService, environmentUrls } from './customer-util.service';
 export class Customer {
   constructor(public id: number, public firstName: string, public lastName: string, public mobileNumber: string, public emailId: string, public userName: string, public password: string, public profileUpdateOtp: number, public savingsAccount: boolean, public currentAccount: boolean) { }
 }
@@ -24,19 +25,19 @@ export class RegisterCustomerService {
   }
 
   getCustomerDetails(customerId: number) {
-    return this.http.get<Customer>(`http://localhost:8080/customer/get_customer?customerId=${customerId}`);
+    return this.http.get<Customer>(`http://${environmentUrls.apiUrl}/customer/get_customer?customerId=${customerId}`);
   }
 
   getUserDetails(userName: string, password: string) {
-    return this.http.get<Customer>(`http://localhost:8080/customer/get_customer_by_username?userName=${userName}&password=${password}`);
+    return this.http.get<Customer>(`http://${environmentUrls.apiUrl}/customer/get_customer_by_username?userName=${userName}&password=${password}`);
   }
 
   updateCustomer(customer: Customer) {
-    return this.http.put<Response>(`http://localhost:8080/customer/update_customer`, customer);
+    return this.http.put<Response>(`http://${environmentUrls.apiUrl}/customer/update_customer`, customer);
   }
 
   sendOtpToUpdateProfile(id: number) {
-    return this.http.patch<Response>(`http://localhost:8080/customer/send_otp_to_update_profile?id=${id}`, id);
+    return this.http.patch<Response>(`http://${environmentUrls.apiUrl}/customer/send_otp_to_update_profile?id=${id}`, id);
   }
 
 
@@ -51,6 +52,6 @@ export class RegisterCustomerService {
     currentAccount: boolean) {
 
     console.log("registercustomer invoked!!")
-    return this.http.post<Response>(`http://localhost:8080/registration/register_customer`, new CustomerWithoutId(firstName, lastName, mobileNumber, emaiId, userName, password, 0, savingsAccount, currentAccount));
+    return this.http.post<Response>(`http://${environmentUrls.apiUrl}/registration/register_customer`, new CustomerWithoutId(firstName, lastName, mobileNumber, emaiId, userName, password, 0, savingsAccount, currentAccount));
   }
 }

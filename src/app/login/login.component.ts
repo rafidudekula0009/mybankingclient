@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HarcodedAuthenticationService } from '../service/harcoded-authentication.service';
 import { Customer, RegisterCustomerService } from '../service/data/register-customer.service';
@@ -9,7 +9,6 @@ import { Customer, RegisterCustomerService } from '../service/data/register-cust
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
   username: string = ''
   password: string = ''
   loginFailed: boolean = false
@@ -39,4 +38,5 @@ export class LoginComponent {
       });
 
   }
+  
 }

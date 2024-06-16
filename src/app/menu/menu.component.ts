@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HarcodedAuthenticationService } from '../service/harcoded-authentication.service';
 
 @Component({
@@ -6,10 +6,13 @@ import { HarcodedAuthenticationService } from '../service/harcoded-authenticatio
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit{
 
-  lastName = sessionStorage.getItem('lastName');
+  lastName:string|any;
   constructor(public hardcodedAuth: HarcodedAuthenticationService) {
 
+  }
+  ngOnInit(): void {
+    this.lastName = sessionStorage.getItem('lastName');
   }
 }
