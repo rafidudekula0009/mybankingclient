@@ -12,10 +12,11 @@ import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { LogoutComponent } from './logout/logout.component';
 import { NeedhelpComponent } from './needhelp/needhelp.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileUpdateComponent } from './profile-update/profile-update.component';
 import { ViewTransactionHistoryComponent } from './view-transaction-history/view-transaction-history.component';
+import { HttpInterceptorBasicAuthService } from './service/http/http-interceptor-basic-auth.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { ViewTransactionHistoryComponent } from './view-transaction-history/view
     HttpClientModule,
     FormsModule //This is used to make use of features like ngModel, ngIf in the html pages of the components added in the declarations above
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorBasicAuthService, multi: true } //for this we have written a service which is mentioned in useClass attribute
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

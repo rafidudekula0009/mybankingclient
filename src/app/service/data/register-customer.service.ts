@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CustomerUtilService, environmentUrls } from './customer-util.service';
@@ -28,8 +28,11 @@ export class RegisterCustomerService {
     return this.http.get<Customer>(`http://${environmentUrls.apiUrl}/customer/get_customer?customerId=${customerId}`);
   }
 
-  getUserDetails(userName: string, password: string) {
-    return this.http.get<Customer>(`http://${environmentUrls.apiUrl}/customer/get_customer_by_username?userName=${userName}&password=${password}`);
+  getUserDetails(userName: string, password: string, basicAuthHeaderString: string) {
+    let header = new HttpHeaders({
+      Authorization: basicAuthHeaderString
+    });
+    return this.http.get<Customer>(`http://${environmentUrls.apiUrl}/customer/get_customer_by_username?userName=${userName}&password=${password}`, { headers: header });
   }
 
   updateCustomer(customer: Customer) {

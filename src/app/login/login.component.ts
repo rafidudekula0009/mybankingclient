@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HarcodedAuthenticationService } from '../service/harcoded-authentication.service';
 import { Customer, RegisterCustomerService } from '../service/data/register-customer.service';
@@ -8,7 +8,7 @@ import { Customer, RegisterCustomerService } from '../service/data/register-cust
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   username: string = ''
   password: string = ''
   loginFailed: boolean = false
@@ -17,12 +17,17 @@ export class LoginComponent {
   constructor(private route: Router, private hardcodedAuth: HarcodedAuthenticationService, private registerCustomerService: RegisterCustomerService) {
 
   }
+  ngOnInit(): void {
+  }
 
   handleRegister() {
     this.route.navigate(['register'])
   }
   handleLogin() {
-    this.registerCustomerService.getUserDetails(this.username, this.password)
+    let username = 'user'
+    let password = 'user'
+    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password)
+    this.registerCustomerService.getUserDetails(this.username, this.password, basicAuthHeaderString)
       .subscribe(data => {
         if (data.lastName != null) {
           this.customer = data;
@@ -38,5 +43,5 @@ export class LoginComponent {
       });
 
   }
-  
+
 }

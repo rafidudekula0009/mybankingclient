@@ -19,8 +19,14 @@ export class WelcomeComponent implements OnInit {
 
   }
 
+
+
   ngOnInit(): void {
-    this.accountService.getAccountDetails(Number(sessionStorage.getItem('id'))).subscribe(data => {
+    let username = 'user'
+    let password = 'user'
+    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password)
+
+    this.accountService.getAccountDetails(Number(sessionStorage.getItem('id')), basicAuthHeaderString).subscribe(data => {
       this.accountDetails = data;
     });
   }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Customer, environmentUrls } from './customer-util.service';
 
@@ -15,8 +15,11 @@ export class AccountService {
 
   }
 
-  getAccountDetails(customerId: number) {
-    return this.http.get<any>(`http://${environmentUrls.apiUrl}/account/get_account_details?customerId=${customerId}`);
+  getAccountDetails(customerId: number, basicAuthHeaderString: string) {
+    let header = new HttpHeaders({
+      Authorization:basicAuthHeaderString
+    });
+    return this.http.get<any>(`http://${environmentUrls.apiUrl}/account/get_account_details?customerId=${customerId}`, {headers : header});
   }
 
   getUserDetails(userName: string, password: string) {
