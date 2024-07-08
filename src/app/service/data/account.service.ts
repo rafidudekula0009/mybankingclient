@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Customer, environmentUrls } from './customer-util.service';
+import { API_URL } from 'src/app/app.const';
+import { Customer } from './customer-util.service';
 
 export class Account {
   constructor(public accountType: string, public balance: Number, public accountNumber: string, public IfscCode: string) { }
@@ -15,23 +16,21 @@ export class AccountService {
 
   }
 
-  getAccountDetails(customerId: number, basicAuthHeaderString: string) {
-    let header = new HttpHeaders({
-      Authorization:basicAuthHeaderString
-    });
-    return this.http.get<any>(`http://${environmentUrls.apiUrl}/account/get_account_details?customerId=${customerId}`, {headers : header});
+  getAccountDetails(customerId: number, header: HttpHeaders) {
+   
+    return this.http.get<any>(`${API_URL}/account/get_account_details?customerId=${customerId}`, {headers : header});
   }
 
   getUserDetails(userName: string, password: string) {
-    return this.http.get<Customer>(`http://${environmentUrls.apiUrl}/customer/get_customer_by_username?userName=${userName}&password=${password}`);
+    return this.http.get<Customer>(`${API_URL}/customer/get_customer_by_username?userName=${userName}&password=${password}`);
   }
 
   updateCustomer(customer: Customer) {
-    return this.http.put<Response>(`http://${environmentUrls.apiUrl}/customer/update_customer`, customer);
+    return this.http.put<Response>(`${API_URL}/customer/update_customer`, customer);
   }
 
   sendOtpToUpdateProfile(id: number) {
-    return this.http.patch<Response>(`http://${environmentUrls.apiUrl}/customer/send_otp_to_update_profile?id=${id}`, id);
+    return this.http.patch<Response>(`${API_URL}/customer/send_otp_to_update_profile?id=${id}`, id);
   }
 
 }

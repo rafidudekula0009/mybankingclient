@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Customer, RegisterCustomerService } from '../service/data/register-customer.service';
 import { AccountService } from '../service/data/account.service';
 import { AccountTransactionService } from '../service/data/account-transaction.service';
+import { BasicAuthenticationService } from '../service/basic-authentication.service';
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
@@ -15,18 +16,18 @@ export class WelcomeComponent implements OnInit {
   accountDetails: any;
   //ActivatedRoute is used to fetch the request parameters/some varaible values sent through url. ex:localhost:4200/welcome/rafi i.e, welcome/<value of the attribute 'name'>
   //So name and any other variable passed in the url can be fetched using ActivatedRoute
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private helloService: RegisterCustomerService, private accountService: AccountService, private accountTransactionService: AccountTransactionService) {
+  constructor(
+    private router: Router, 
+    private activatedRoute: ActivatedRoute, 
+    private helloService: RegisterCustomerService, 
+    private accountService: AccountService, 
+    private accountTransactionService: AccountTransactionService,
+    private basicAuthService:BasicAuthenticationService) {
 
   }
 
-
-
   ngOnInit(): void {
-    let username = 'user'
-    let password = 'user'
-    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password)
-
-    this.accountService.getAccountDetails(Number(sessionStorage.getItem('id')), basicAuthHeaderString).subscribe(data => {
+    this.accountService.getAccountDetails(Number(sessionStorage.getItem('id')), this.basicAuthService.getUserDetails('user','user')).subscribe(data => {
       this.accountDetails = data;
     });
   }
@@ -40,6 +41,3 @@ export class WelcomeComponent implements OnInit {
     this.router.navigate(['view_transaction_history', accountId, accountType, accountNumber])
   }
 }
-
-
-

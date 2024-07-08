@@ -13,11 +13,6 @@ export class Customer {
     public currentAccount: boolean) { }
 }
 
-export const environmentUrls = {
-  // "apiUrl": "banking-app-spring-boot-dev.eba-5dpfedhf.us-east-1.elasticbeanstalk.com",
-  "apiUrl": "localhost:5000",
-};
-
 @Injectable({
   providedIn: 'root'
 })

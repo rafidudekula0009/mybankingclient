@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class HarcodedAuthenticationService {
+export class BasicAuthenticationService {
 
   constructor() { }
 
@@ -18,4 +18,17 @@ export class HarcodedAuthenticationService {
   public logout() {
     sessionStorage.removeItem('lastName');
   }
+
+  basicAuthHeaderString:any;
+  
+  getUserDetails(userName: string, password: string) {
+
+   this.basicAuthHeaderString = 'Basic ' + window.btoa('user' + ':' + 'user')
+
+    let header = new HttpHeaders({
+      Authorization: this.basicAuthHeaderString
+    });
+    return header
+  }
+
 }
